@@ -1,0 +1,8 @@
+Release/
+*.pyc
+*.pyo
+*.lib
+build*/
+built/
+*.a
+*.bkp # TEMP
