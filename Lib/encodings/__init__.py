@@ -69,9 +69,17 @@ def normalize_encoding(encoding):
     return '_'.join(encoding.translate(_norm_encoding_map).split())
 
 def search_function(encoding):
+    norm_encoding = normalize_encoding(encoding)
+    aliased_encoding = _aliases.get(norm_encoding) or \
+                       _aliases.get(norm_encoding.replace('.', '_'))
 
     # Cache lookup
-    entry = _cache.get(encoding, _unknown)
+    if aliased_encoding is not None:
+        entry = _cache.get(aliased_encoding, _unknown)
+        if entry is not _unknown:
+            return entry
+
+    entry = _cache.get(norm_encoding, _unknown)
     if entry is not _unknown:
         return entry
 
