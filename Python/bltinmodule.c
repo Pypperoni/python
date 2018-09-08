@@ -489,7 +489,7 @@ static PyObject *
 builtin_eval(PyObject *self, PyObject *args)
 {
     PyErr_SetString(PyExc_RuntimeError, "eval disabled");
-    Py_RETURN_NONE;
+    return NULL;
 }
 
 PyDoc_STRVAR(eval_doc,
