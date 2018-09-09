@@ -115,6 +115,7 @@ def register_mod(mod):
     # Cache the codec registry entry
     encoding = entry.name
     _cache[encoding] = entry
+    _cache[mod.__name__.split('.', 1)[1]] = entry
 
     # Register its aliases (without overwriting previously registered
     # aliases)
